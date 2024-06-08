@@ -9,7 +9,6 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float _speed = 5f;
 
     //Input System
-    public static Vector2 Movement;
     private Vector2 _movement;
     private Rigidbody2D _rb;
     private Animator _animator;
@@ -22,6 +21,10 @@ public class PlayerControls : MonoBehaviour
     private const string LastHorizontal = "LastHorizontal";
     private const string LastVertical = "LastVertical";
 
+    public static Vector2 Movement;
+    public AudioSource footstepSFX;
+    public float footstepInterval = 0.5f;
+    private float nextFootstepTime;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class PlayerControls : MonoBehaviour
     {
         PlayerMove();
         HandleAnimation();
+        PlayFootstepSound();
     }
 
     private void SetupPlayer()
@@ -54,7 +58,6 @@ public class PlayerControls : MonoBehaviour
     {
         if (_moveAction != null)
             Movement = _moveAction.ReadValue<Vector2>();
-
     }
 
     private void HandleAnimation()
@@ -67,7 +70,16 @@ public class PlayerControls : MonoBehaviour
         if (_movement != Vector2.zero)
         {
             _animator.SetFloat(LastHorizontal, _movement.x);
-            _animator.SetFloat(LastVertical, _movement.y);
+            _animator.SetFloat(LastVertical, _movement.y);  
+        }
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (Movement != Vector2.zero && Time.time >= nextFootstepTime)
+        {
+            footstepSFX.Play();
+            nextFootstepTime = Time.time + footstepInterval;
         }
     }
 }
