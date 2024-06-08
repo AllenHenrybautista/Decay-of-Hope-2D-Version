@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80dd1f1ed9b90344abf77178a00c5737, type: 3}
+  m_Name: LuxuryCloth
+  m_EditorClassIdentifier: 
+  name: Luxury Clothes
+  clothIcon: {fileID: -1483785599, guid: d75ae7ff6d6226c4da811929d2ac337e, type: 3}
+  cost: 30
+  sellvalue: 15
+  description: treat yourself. have a luxurious cloth that you will use on daily
+    work.
+  selectedClothType: 1
+  isEquipped: 0
+  isPurchased: 1
