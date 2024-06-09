@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,31 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public List<ClothingBase> inventory = new List<ClothingBase>();
+    public int inventoryLimit = 4;
     public Wallet wallet;
+
+    public event Action<ClothingBase> OnItemSoldOrRemoved;
 
     public void Buy(ClothingBase item)
     {
-        if (wallet.money >= item.cost)
+        ClothingBase existingItem = inventory.Find(i => i.id == item.id);
+
+        if (existingItem != null)
         {
-            wallet.money -= item.cost;
+            Debug.LogWarning($"Item with ID {item.id} is already in the inventory.");
+            return;
+        }
+
+        if (inventory.Count >= inventoryLimit)
+        {
+            wallet.money += (inventory[0].sellvalue - item.cost);
+            inventory.RemoveAt(0);
+            inventory.Add(item);
+            Debug.Log("Inventory Full, Item Sold: " + inventory[0].name + " for " + inventory[0].sellvalue + " dollars");
+            Debug.Log("Item Bought: " + item.name + " for " + item.cost + " dollars");
+        }
+        else
+        {
             inventory.Add(item);
             Debug.Log("Item Bought: " + item.name + " for " + item.cost + " dollars");
         }
@@ -21,9 +40,15 @@ public class PlayerInventory : MonoBehaviour
     {
         if (inventory.Contains(item) && item.isPurchased)
         {
+            Debug.Log("Selling item: " + item.name);
             wallet.money += item.sellvalue;
             inventory.Remove(item);
+            OnItemSoldOrRemoved?.Invoke(item);
             Debug.Log("Item Sold: " + item.name + " for " + item.sellvalue + " dollars");
+        }
+        else
+        {
+            Debug.LogWarning("Item could not be sold. Either it doesn't exist in the inventory or it has not been purchased.");
         }
     }
 }

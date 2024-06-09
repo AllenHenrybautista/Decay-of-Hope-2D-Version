@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80dd1f1ed9b90344abf77178a00c5737, type: 3}
-  m_Name: Witch's Hat
+  m_Name: Sorcerrer's Hat
   m_EditorClassIdentifier: 
+  id: 13
   name: Sorcerrer's Hat
   clothIcon: {fileID: -1660686594, guid: 2ca5c251dd804c248a8dad4ee9ea8e6d, type: 3}
   cost: 20

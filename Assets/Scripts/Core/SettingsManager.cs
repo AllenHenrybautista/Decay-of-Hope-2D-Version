@@ -80,7 +80,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ExitClicked()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false; - for Editor Testing
         Application.Quit();
     }
 }
