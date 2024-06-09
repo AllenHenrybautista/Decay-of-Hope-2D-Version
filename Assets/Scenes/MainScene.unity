@@ -6801,6 +6801,59 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1542877377}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &536042678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 536042679}
+  - component: {fileID: 536042680}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &536042679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536042678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1060922457}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &536042680
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536042678}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f95a474bc719c9499b17053e7a2872e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &538114741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 7277dd75e907b27448ec1de08238d0bb,
@@ -12499,6 +12552,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3573719d78c38745834b0d96bb1e2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1352198273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 868556798251725637, guid: dd9e6ef949c20244794d48937fa58ca3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8011686066329819365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2526d1855efb3424d9ff7d82db1fad94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1352198274 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4485339577273886695, guid: dd9e6ef949c20244794d48937fa58ca3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8011686066329819365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1366507482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7509736641193634087, guid: 2d546d2d8b016864ab41e2185c250eb5,
@@ -28759,6 +28830,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2969383398486865412, guid: e796bcb3b4d95e54a9771f959e02eee1,
+        type: 3}
+      propertyPath: m_Spacing
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2976347018831358374, guid: e796bcb3b4d95e54a9771f959e02eee1,
         type: 3}
       propertyPath: wallet
@@ -28999,6 +29075,16 @@ PrefabInstance:
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 1352198270}
+    - target: {fileID: 6075833643946404991, guid: e796bcb3b4d95e54a9771f959e02eee1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 297.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075833643946404991, guid: e796bcb3b4d95e54a9771f959e02eee1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -152
+      objectReference: {fileID: 0}
     - target: {fileID: 6206272570789762521, guid: e796bcb3b4d95e54a9771f959e02eee1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -29184,6 +29270,11 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 1352198270}
+    - target: {fileID: 8569654832386171634, guid: e796bcb3b4d95e54a9771f959e02eee1,
+        type: 3}
+      propertyPath: clothSlots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8861298543294655665, guid: e796bcb3b4d95e54a9771f959e02eee1,
         type: 3}
       propertyPath: wallet
@@ -29216,7 +29307,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2976347018831358374, guid: e796bcb3b4d95e54a9771f959e02eee1, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8482714478751734809, guid: e796bcb3b4d95e54a9771f959e02eee1, type: 3}
+    - {fileID: 1645153468621652686, guid: e796bcb3b4d95e54a9771f959e02eee1, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3964647768294233557, guid: e796bcb3b4d95e54a9771f959e02eee1,
         type: 3}
@@ -29261,6 +29354,16 @@ PrefabInstance:
       propertyPath: footstepSFX
       value: 
       objectReference: {fileID: 447528062}
+    - target: {fileID: 868556798251725637, guid: dd9e6ef949c20244794d48937fa58ca3,
+        type: 3}
+      propertyPath: bodyAnimator
+      value: 
+      objectReference: {fileID: 536042680}
+    - target: {fileID: 868556798251725637, guid: dd9e6ef949c20244794d48937fa58ca3,
+        type: 3}
+      propertyPath: headAnimator
+      value: 
+      objectReference: {fileID: 1352198274}
     - target: {fileID: 868556798251725637, guid: dd9e6ef949c20244794d48937fa58ca3,
         type: 3}
       propertyPath: footstepInterval
@@ -29363,6 +29466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280660719067200497, guid: dd9e6ef949c20244794d48937fa58ca3,
         type: 3}
+      propertyPath: inventoryLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280660719067200497, guid: dd9e6ef949c20244794d48937fa58ca3,
+        type: 3}
       propertyPath: itemIconImage1
       value: 
       objectReference: {fileID: 0}
@@ -29381,6 +29489,11 @@ PrefabInstance:
       propertyPath: itemIconImage4
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2280660719067200497, guid: dd9e6ef949c20244794d48937fa58ca3,
+        type: 3}
+      propertyPath: playerControls
+      value: 
+      objectReference: {fileID: 1352198273}
     - target: {fileID: 7070479212767247276, guid: dd9e6ef949c20244794d48937fa58ca3,
         type: 3}
       propertyPath: m_Name
@@ -29398,6 +29511,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 447528061}
+    - targetCorrespondingSourceObject: {fileID: 1922904211528018609, guid: dd9e6ef949c20244794d48937fa58ca3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 536042679}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9e6ef949c20244794d48937fa58ca3, type: 3}
 --- !u!1001 &9085989351272931862
