@@ -21,3 +21,5 @@ MonoBehaviour:
   selectedClothType: 1
   isEquipped: 0
   isPurchased: 0
+  sprites: []
+  animatorController: {fileID: 0}
