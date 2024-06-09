@@ -12,6 +12,7 @@ public class InteractUI : MonoBehaviour
     public bool inRange;
     public bool UIActive;
     public GameObject ShopUI;
+    public GameObject InteractButton;
 
     AudioManager audioManager;
 
@@ -80,12 +81,17 @@ public class InteractUI : MonoBehaviour
         {
             inRange = true;
             Debug.Log("Player in range");
+            InteractButton.SetActive(true);
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
+            InteractButton.SetActive(false);
             inRange = false;
+        }
+            
     }
 }
