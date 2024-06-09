@@ -45,4 +45,10 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log("Item Sold: " + item.name + " for " + item.sellvalue + " dollars");
         }
     }
+
+    //to prevent player to buy same type of cloth (1 body and 1 head only)
+    public bool HasClothType(ClothingBase.ClothType type)
+    {
+        return inventory.Exists(i => i.selectedClothType == type);
+    }
 }

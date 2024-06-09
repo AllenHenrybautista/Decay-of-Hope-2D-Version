@@ -21,16 +21,19 @@ public class BuyItem : MonoBehaviour
         if (wallet.money >= itemManager.Cost)
         {
             ClothingBase existingItem = playerInventory.inventory.Find(i => i.id == itemManager.displayedCloth.id);
-
             if (existingItem != null)
             {
                 Debug.LogWarning($"Item with ID {itemManager.displayedCloth.id} is already in the inventory.");
+            }
+            else if (playerInventory.HasClothType(itemManager.displayedCloth.selectedClothType))
+            {
+                Debug.LogWarning($"You already have a {itemManager.displayedCloth.selectedClothType} item equipped.");
             }
             else
             {
                 wallet.money -= itemManager.Cost;
                 playerInventory.inventory.Add(itemManager.displayedCloth);
-                itemManager.displayedCloth.isPurchased = true; 
+                itemManager.displayedCloth.isPurchased = true;
                 Debug.Log("Item Bought: " + itemManager.displayedCloth.name + " for " + itemManager.Cost + " dollars");
                 audioManager.PlaySFX(audioManager.buy);
             }
