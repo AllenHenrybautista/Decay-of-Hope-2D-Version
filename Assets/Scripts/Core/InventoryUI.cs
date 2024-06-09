@@ -33,13 +33,12 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // Function to remove item from inventory based on index
     public void RemoveItemFromInventory(int index)
     {
         if (index >= 0 && index < playerInventory.inventory.Count)
         {
             playerInventory.inventory.RemoveAt(index);
-            UpdateInventoryDisplay(); // Update the inventory display after removing the item
+            UpdateInventoryDisplay();
         }
         else
         {

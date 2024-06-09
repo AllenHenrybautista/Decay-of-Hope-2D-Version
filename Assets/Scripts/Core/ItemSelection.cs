@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ItemSelection : MonoBehaviour
 {
+    AudioManager audioManager;
     public ItemManager itemManager;
     public ClothingBase cloth;
 
-    AudioManager audioManager;
 
     private void Awake()
     {

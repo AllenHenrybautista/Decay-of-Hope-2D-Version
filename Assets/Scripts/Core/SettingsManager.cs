@@ -6,17 +6,16 @@ using UnityEngine.InputSystem;
 
 public class SettingsManager : MonoBehaviour
 {
+    AudioManager audioManager;
+
     public GameObject SettingsUI;
     public GameObject BGMToggle;
     public GameObject SFXToggle;
     public GameObject Resume;
     public GameObject Exit;
-
     public bool SettingsActive;
-
-    AudioManager audioManager;
-
     public AudioSource audioSource;
+
 
     private void Awake()
     {

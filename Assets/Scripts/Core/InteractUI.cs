@@ -8,13 +8,15 @@ using UnityEngine.Events;
 
 public class InteractUI : MonoBehaviour
 {
+    AudioManager audioManager;
+
     [SerializeField] UnityEvent _onInteractionTriggered;
+
     public bool inRange;
     public bool UIActive;
     public GameObject ShopUI;
     public GameObject InteractButton;
 
-    AudioManager audioManager;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class InteractUI : MonoBehaviour
             else if (UIActive)
                 CloseShop();
         }
+
         _onInteractionTriggered?.Invoke();
     }
 
@@ -92,6 +95,5 @@ public class InteractUI : MonoBehaviour
             InteractButton.SetActive(false);
             inRange = false;
         }
-            
     }
 }

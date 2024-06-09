@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dd1f1ed9b90344abf77178a00c5737, type: 3}
   m_Name: Basic Cloth
   m_EditorClassIdentifier: 
+  id: 10
   name: Basic Clothes
   clothIcon: {fileID: -1625791172, guid: 94ed4ad6b1f1f40409eba5d19eba2e37, type: 3}
   cost: 15

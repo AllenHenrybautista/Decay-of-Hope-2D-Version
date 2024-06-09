@@ -9,7 +9,7 @@ public class ItemManager : MonoBehaviour
 {
     public ClothingBase displayedCloth;
 
-
+    [Header("Item Information")]
     public string clothName;
     public string clothDescription;
     public Sprite clothIcon;
@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviour
     public string clothType;
     public int sellValue;
 
-
+    //Refs
     public TextMeshProUGUI itemNameUI;
     public TextMeshProUGUI itemDescriptionUI;
     public Image clothIconUI;

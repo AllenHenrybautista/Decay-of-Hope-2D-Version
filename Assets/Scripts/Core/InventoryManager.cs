@@ -7,11 +7,6 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryMenu;
     private bool menuActivated;
 
-    void Start()
-    {
-      
-    }
-
     private void Update()
     {
        if (Input.GetButtonDown("Inventory") && menuActivated)

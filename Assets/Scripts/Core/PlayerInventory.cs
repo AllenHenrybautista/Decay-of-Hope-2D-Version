@@ -6,10 +6,9 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public List<ClothingBase> inventory = new List<ClothingBase>();
+    public event Action<ClothingBase> OnItemSoldOrRemoved;
     public int inventoryLimit = 4;
     public Wallet wallet;
-
-    public event Action<ClothingBase> OnItemSoldOrRemoved;
 
     public void Buy(ClothingBase item)
     {
@@ -26,7 +25,6 @@ public class PlayerInventory : MonoBehaviour
             wallet.money += (inventory[0].sellvalue - item.cost);
             inventory.RemoveAt(0);
             inventory.Add(item);
-            Debug.Log("Inventory Full, Item Sold: " + inventory[0].name + " for " + inventory[0].sellvalue + " dollars");
             Debug.Log("Item Bought: " + item.name + " for " + item.cost + " dollars");
         }
         else
@@ -45,10 +43,6 @@ public class PlayerInventory : MonoBehaviour
             inventory.Remove(item);
             OnItemSoldOrRemoved?.Invoke(item);
             Debug.Log("Item Sold: " + item.name + " for " + item.sellvalue + " dollars");
-        }
-        else
-        {
-            Debug.LogWarning("Item could not be sold. Either it doesn't exist in the inventory or it has not been purchased.");
         }
     }
 }

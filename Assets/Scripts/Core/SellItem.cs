@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SellItem : MonoBehaviour
 {
+    AudioManager audioManager;
+
     public Wallet wallet;
     public ItemManager itemManager;
     public PlayerInventory inventoryManager;
 
-    AudioManager audioManager;
 
     private void Awake()
     {

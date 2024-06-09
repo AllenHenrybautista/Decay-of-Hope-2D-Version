@@ -9,7 +9,6 @@ public class BuyItem : MonoBehaviour
     public PlayerInventory playerInventory;
     public List<ClothingBase> inventory = new List<ClothingBase>();
 
-
     AudioManager audioManager;
 
     private void Awake()
@@ -21,7 +20,6 @@ public class BuyItem : MonoBehaviour
     {
         if (wallet.money >= itemManager.Cost)
         {
-            // Check if the item already exists in the inventory
             ClothingBase existingItem = playerInventory.inventory.Find(i => i.id == itemManager.displayedCloth.id);
 
             if (existingItem != null)
@@ -31,8 +29,8 @@ public class BuyItem : MonoBehaviour
             else
             {
                 wallet.money -= itemManager.Cost;
-                playerInventory.inventory.Add(itemManager.displayedCloth); // Add the item to the inventory
-                itemManager.displayedCloth.isPurchased = true; // Mark the item as purchased
+                playerInventory.inventory.Add(itemManager.displayedCloth);
+                itemManager.displayedCloth.isPurchased = true; 
                 Debug.Log("Item Bought: " + itemManager.displayedCloth.name + " for " + itemManager.Cost + " dollars");
                 audioManager.PlaySFX(audioManager.buy);
             }
