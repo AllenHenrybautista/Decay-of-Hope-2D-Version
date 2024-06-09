@@ -48,7 +48,6 @@ public class AudioManager : MonoBehaviour
     public void ToggleBGM(bool isOn)
     {
         _musicSource.mute = !isOn;
-        _ambienceSource.mute = !isOn;
     }
 
     public void ToggleSFX(bool isOn)
