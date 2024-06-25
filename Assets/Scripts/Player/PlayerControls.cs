@@ -74,6 +74,17 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+
+    private void Attack()
+    {
+        //craete attack logic
+        if (_movement != Vector2.zero)
+        {
+            _animator.SetFloat(Horizontal, _movement.x);
+            _animator.SetFloat(Vertical, _movement.y);
+        }
+    }
+
     private void PlayFootstepSound()
     {
         if (Movement != Vector2.zero && Time.time >= nextFootstepTime)
