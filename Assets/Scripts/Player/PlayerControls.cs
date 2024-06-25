@@ -20,6 +20,8 @@ public class PlayerControls : MonoBehaviour
     private const string Vertical = "Vertical";
     private const string LastHorizontal = "LastHorizontal";
     private const string LastVertical = "LastVertical";
+    private const string AttackTrigger = "Attack";
+
 
     public static Vector2 Movement;
     public AudioSource footstepSFX;
@@ -77,16 +79,27 @@ public class PlayerControls : MonoBehaviour
 
     private void Attack()
     {
-        //craete attack logic
-        if (_movement != Vector2.zero)
+       if (_playerInput.actions["Attack"].triggered)
         {
-            _animator.SetFloat(Horizontal, _movement.x);
-            _animator.SetFloat(Vertical, _movement.y);
+            _animator.SetTrigger(AttackTrigger);
         }
+
     }
+
+    //craete function that will connect to attack in input system
+    //create a trigger in animator
+    //create a bool in animator
+    private void OnEnable()
+    {
+        _moveAction.Enable();
+    }
+
 
     private void PlayFootstepSound()
     {
+        if (footstepSFX == null)
+            return;
+        
         if (Movement != Vector2.zero && Time.time >= nextFootstepTime)
         {
             footstepSFX.Play();
