@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip sell;
     public AudioClip notEnoughMoney;
     public AudioClip addMoney;
+    public AudioClip Hit;
+    public AudioClip Slash;
 
     private void Start()
     {

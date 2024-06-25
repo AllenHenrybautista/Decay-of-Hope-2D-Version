@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -14,13 +15,13 @@ public class PlayerControls : MonoBehaviour
     private Animator _animator;
     private InputAction _moveAction;
     private PlayerInput _playerInput;
+    private PlayerCombat _playerCombat;
 
     //Animation Parameters
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
     private const string LastHorizontal = "LastHorizontal";
     private const string LastVertical = "LastVertical";
-    private const string AttackTrigger = "Attack";
 
 
     public static Vector2 Movement;
@@ -45,13 +46,17 @@ public class PlayerControls : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _playerCombat = GetComponent<PlayerCombat>();
     }
 
     private void ReadInputs()
     {
         _playerInput = GetComponent<PlayerInput>();
         if (_playerInput != null)
-            _moveAction = _playerInput.actions["Move"];        
+        {
+            _moveAction = _playerInput.actions["Move"];
+        }
+                
         else
             Debug.LogError("PlayerInput is Missing");
     }
@@ -72,28 +77,10 @@ public class PlayerControls : MonoBehaviour
         if (_movement != Vector2.zero)
         {
             _animator.SetFloat(LastHorizontal, _movement.x);
-            _animator.SetFloat(LastVertical, _movement.y);  
+            _animator.SetFloat(LastVertical, _movement.y);
+            _playerCombat.UpdateDirection(_movement.x, _movement.y);
         }
     }
-
-
-    private void Attack()
-    {
-       if (_playerInput.actions["Attack"].triggered)
-        {
-            _animator.SetTrigger(AttackTrigger);
-        }
-
-    }
-
-    //craete function that will connect to attack in input system
-    //create a trigger in animator
-    //create a bool in animator
-    private void OnEnable()
-    {
-        _moveAction.Enable();
-    }
-
 
     private void PlayFootstepSound()
     {
