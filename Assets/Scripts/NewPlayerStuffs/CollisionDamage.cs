@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -13,4 +12,6 @@ public class CollisionDamage : MonoBehaviour
             Debug.Log(Equals("Player" + " took damage"));
         }
     }
+
+   
 }

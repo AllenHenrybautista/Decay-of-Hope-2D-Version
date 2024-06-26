@@ -8,10 +8,9 @@ using UnityEngine;
 public class Enemy : EnemyAI
 {
     public string TargetTag;
-
-    public int MaxHealth = 100;
-    public int CurrentHealth;
     public int Speed = 0;
+    public int Health = 100;
+    public int CurrentHealth = 0;
     public string Name;
 
     public enum EnemyType
@@ -34,74 +33,7 @@ public class Enemy : EnemyAI
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-     * 
-     * 
-     * 
-    
-    
-    
-    
-    
-    
-    
-    EnemyAI enemyAI;
-
-    public int MaxHealth = 100;
-    public int CurrentHealth;
-
-    public Rigidbody2D rb;
-    public float speed;
-
-
-    private void Start()
-    {
-        //Make sure that the enemy has the correct health based on scriptable object AI
-
-    }
-
-
-    public void ChasePlayer(Vector2 targetPosition)
-    {
-       transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-    }
-
+    //create a damage logic
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
@@ -113,7 +45,6 @@ public class Enemy : EnemyAI
 
     public void Die()
     {
-      Debug.Log("Enemy died!");
-        Destroy(gameObject);
-    }*/
+        Destroy(this);
+    }
 }

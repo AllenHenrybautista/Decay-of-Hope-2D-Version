@@ -7,35 +7,32 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DumbZombie", menuName = "AI/DumbZombie")]
 public class DumbZombie : EnemyAI
 {
-
     public bool isNear = false;
-    public Collider2D trigger;
 
     public override void think(EnemyLogic logic)
     {
         //get the player object
         GameObject target = GameObject.FindGameObjectWithTag("Player");
-        if (isNear)
+        var move = logic.GetComponent<EnemyBasicMove>();
+
+        if (move)
         {
-            //if the player is near, attack
-            var move = logic.GetComponent<EnemyBasicMove>();
-            if (move)
+            if (isNear && target != null)
             {
+                //if the player is near, attack
                 move.MoveTowardsTarget(target.transform.position);
             }
+            else
+            {
+                //move randomly
+                move.MoveTowardsTarget(new Vector2(Random.Range(-4, 10), Random.Range(-4, 10)));
+            }
         }
-        else
-
-        {
-            var move = logic.GetComponent<EnemyBasicMove>();
-            move.MoveTowardsTarget(new Vector2(Random.Range(-10, 10), Random.Range(-10, 10)));
-        }
-
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             isNear = true;
         }

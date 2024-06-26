@@ -6,9 +6,10 @@ public class EnemyLogic : MonoBehaviour
 {
    public EnemyAI enemyAI;
 
-
     private void Update()
     {
         enemyAI.think(this);
     }
+
 }
+

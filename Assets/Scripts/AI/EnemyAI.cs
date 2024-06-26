@@ -6,5 +6,4 @@ using UnityEngine;
 public abstract class EnemyAI : ScriptableObject
 {
     public abstract void think(EnemyLogic logic);
-
 }

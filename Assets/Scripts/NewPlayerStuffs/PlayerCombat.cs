@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     public int playerHealth = 100;
     public int remainingHealth = 0;
 
+    CollisionDamage collisionDamage;
     AudioManager audioManager;
 
     private float _lastHorizontal;
@@ -40,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
 
             foreach (Collider2D enemy in hitEnemies)
             {
-               Debug.Log("hit" + enemy.name);
+                enemy.GetComponent<SimpleHealth>().TakeDamage(attackDamage);
             }
         }
     }
