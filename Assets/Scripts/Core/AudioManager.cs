@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _SFXSource;
     [SerializeField] private AudioSource _ambienceSource;
+    [SerializeField] private AudioSource _combatSource;
 
     [Header("Audio Clips")]
     public AudioClip bgm;
@@ -21,6 +22,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip addMoney;
     public AudioClip Hit;
     public AudioClip Slash;
+    public AudioClip ZombieDeath;
 
     private void Start()
     {
@@ -40,11 +42,14 @@ public class AudioManager : MonoBehaviour
         _ambienceSource.Play();
     }
 
-
     public void PlaySFX(AudioClip clip)
     {
-        _SFXSource.clip = clip;
-        _SFXSource.Play();
+        _SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayCombatSFX(AudioClip clip)
+    {
+        _combatSource.PlayOneShot(clip);
     }
 
     public void ToggleBGM(bool isOn)
@@ -55,5 +60,53 @@ public class AudioManager : MonoBehaviour
     public void ToggleSFX(bool isOn)
     {
         _SFXSource.mute = !isOn;
+        _combatSource.mute = !isOn;
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        _SFXSource.volume = volume;
+    }
+
+    public void SetCombatSFXVolume(float volume)
+    {
+        _combatSource.volume = volume;
+    }
+
+    public void PlaySoundEffect(string clipName)
+    {
+        switch (clipName)
+        {
+            case "shopOpen":
+                PlaySFX(shopOpen);
+                break;
+            case "shopClose":
+                PlaySFX(shopClose);
+                break;
+            case "select":
+                PlaySFX(select);
+                break;
+            case "buy":
+                PlaySFX(buy);
+                break;
+            case "sell":
+                PlaySFX(sell);
+                break;
+            case "notEnoughMoney":
+                PlaySFX(notEnoughMoney);
+                break;
+            case "addMoney":
+                PlaySFX(addMoney);
+                break;
+            case "Hit":
+                PlayCombatSFX(Hit);
+                break;
+            case "Slash":
+                PlayCombatSFX(Slash);
+                break;
+            case "ZombieDeath":
+                PlayCombatSFX(ZombieDeath);
+                break;
+        }
     }
 }
