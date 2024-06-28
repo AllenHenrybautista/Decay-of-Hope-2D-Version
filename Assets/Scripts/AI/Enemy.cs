@@ -3,37 +3,35 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "EnemyAI", menuName = "AI/EnemyAI")]
 public class Enemy : EnemyAI
 {
     public string TargetTag;
-    public int Speed = 0;
+    public float Speed = 0.8f;
     public int Health = 100;
     public int CurrentHealth = 0;
     public string Name;
 
-    public enum EnemyType
-    {
-        Melee,
-        Ranged,
-        Boss
-    }
-
     public override void think(EnemyLogic logic)
     {
+        var move = logic.GetComponent<EnemyHandler>();
         GameObject target = GameObject.FindGameObjectWithTag(TargetTag);
-        if (target)
+
+        if (target != null)
         {
-            var move = logic.GetComponent<EnemyHandler>();
-            if (move)
+            // Check if the specific enemy instance is near the player
+            if (move.isNear)
             {
                 move.MoveTowardsTarget(target.transform.position);
+            }
+            else
+            {
+                move.Roam();
             }
         }
     }
 
-    //create a damage logic
+    // Damage logic
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
@@ -48,3 +46,4 @@ public class Enemy : EnemyAI
         Destroy(this);
     }
 }
+

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat_NEW : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private AudioManager audioManager;
 
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
@@ -20,8 +19,15 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPointUp;
     public Transform attackPointDown;
 
+    AudioManager audioManager;
+
     private float _lastHorizontal;
     private float _lastVertical;
+
+    private void Awake()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     public void UpdateDirection(float lastHorizontal, float lastVertical)
     {
@@ -45,25 +51,52 @@ public class PlayerCombat : MonoBehaviour
             Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(attackPointUp.position, attackRange, enemyLayers);
             Collider2D[] hitEnemiesDown = Physics2D.OverlapCircleAll(attackPointDown.position, attackRange, enemyLayers);
 
-            foreach (Collider2D enemy in hitEnemiesRight)
+            foreach (Collider2D enemyCollider in hitEnemiesRight)
             {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
+                // Retrieve the AIBase_LogicHandler script from the enemy object
+                AIBase_LogicHandler enemyLogic = enemyCollider.GetComponent<AIBase_LogicHandler>();
+
+                if (enemyLogic != null)
+                {
+                    // Pass the attackDamage variable or another appropriate damage value
+                    enemyLogic.dataHandler.TakeDamage(attackDamage);
+                }
             }
 
-            foreach (Collider2D enemy in hitEnemiesUp)
+            foreach (Collider2D enemyCollider in hitEnemies)
             {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
+                // Retrieve the AIBase_LogicHandler script from the enemy object
+                AIBase_LogicHandler enemyLogic = enemyCollider.GetComponent<AIBase_LogicHandler>();
+
+                if (enemyLogic != null)
+                {
+                    // Pass the attackDamage variable or another appropriate damage value
+                    enemyLogic.dataHandler.TakeDamage(attackDamage);
+                }
             }
 
-            foreach (Collider2D enemy in hitEnemiesDown)
+            foreach (Collider2D enemyCollider in hitEnemiesUp)
             {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
+                // Retrieve the AIBase_LogicHandler script from the enemy object
+                AIBase_LogicHandler enemyLogic = enemyCollider.GetComponent<AIBase_LogicHandler>();
+
+                if (enemyLogic != null)
+                {
+                    // Pass the attackDamage variable or another appropriate damage value
+                    enemyLogic.dataHandler.TakeDamage(attackDamage);
+                }
             }
 
-            foreach (Collider2D enemy in hitEnemies)
+            foreach (Collider2D enemyCollider in hitEnemiesDown)
             {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
-               
+                // Retrieve the AIBase_LogicHandler script from the enemy object
+                AIBase_LogicHandler enemyLogic = enemyCollider.GetComponent<AIBase_LogicHandler>();
+
+                if (enemyLogic != null)
+                {
+                    // Pass the attackDamage variable or another appropriate damage value
+                    enemyLogic.dataHandler.TakeDamage(attackDamage);
+                }
             }
 
             //play slash sound from audio manager
@@ -99,7 +132,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Die()
     {
-        GetComponent<PlayerCombat>().enabled = false;
+        GetComponent<PlayerCombat_NEW>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
     }
 }

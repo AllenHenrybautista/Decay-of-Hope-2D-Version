@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 3763037065093953945}
   - component: {fileID: 7486950106625509695}
   - component: {fileID: 2829842914612132643}
-  - component: {fileID: 7938432227283457114}
-  - component: {fileID: 5122896383540608308}
+  - component: {fileID: 6977622542727590674}
   m_Layer: 6
   m_Name: Chase Zombie
   m_TagString: Untagged
@@ -36,6 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7919954073695876261}
   - {fileID: 2957860352585571405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -219,7 +219,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7938432227283457114
+--- !u!114 &6977622542727590674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,30 +228,91 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500433182352586743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e578e774942d148a3724498ffdd954, type: 3}
+  m_Script: {fileID: 11500000, guid: 19d5911ca77ba484c8735f11cae4c957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAI: {fileID: 11400000, guid: 5c3d07794c2cd7f4dac20d2828dc93e9, type: 2}
---- !u!114 &5122896383540608308
+  dataHandler: {fileID: 11400000, guid: 8e5c278a7f5ac164cb8e7d9e8ba42f24, type: 2}
+--- !u!1 &8105310678928467764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7919954073695876261}
+  - component: {fileID: 2202674266804872178}
+  - component: {fileID: 7755292410831056214}
+  m_Layer: 6
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7919954073695876261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105310678928467764}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5510984279891457587}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2202674266804872178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500433182352586743}
+  m_GameObject: {fileID: 8105310678928467764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3baf9d101963ce4dbd3f6b1f1f00d46, type: 3}
+  m_Script: {fileID: 11500000, guid: 22a6e98160d4be049b6e66959e16c606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anim: {fileID: 2829842914612132643}
-  rb: {fileID: 2316640209718141286}
-  moveSpeed: 0.5
-  isNear: 0
-  maxHealth: 100
-  currentHealth: 0
-  isTakingDamage: 0
-  blood: {fileID: 2785564180436197905}
+  _trigger: {fileID: 7755292410831056214}
+--- !u!58 &7755292410831056214
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105310678928467764}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.41519833}
+  serializedVersion: 2
+  m_Radius: 3.3114843
 --- !u!1001 &1233878700819291422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,6 +340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Blood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014908460397412111, guid: 8d51e974df5d1154184f8f3cf050df25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4040837678689812819, guid: 8d51e974df5d1154184f8f3cf050df25,
         type: 3}
@@ -340,12 +406,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d51e974df5d1154184f8f3cf050df25, type: 3}
---- !u!1 &2785564180436197905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4014908460397412111, guid: 8d51e974df5d1154184f8f3cf050df25,
-    type: 3}
-  m_PrefabInstance: {fileID: 1233878700819291422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2957860352585571405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4040837678689812819, guid: 8d51e974df5d1154184f8f3cf050df25,

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac8d6abb53a23144a27d6b04ba8889f, type: 3}
   m_Name: PlayerChase
   m_EditorClassIdentifier: 
-  IDTag: 
-  Name: Mumu
-  Health: 100
+  rangeTrigger: {fileID: 0}
+  _anim: {fileID: 0}
   TargetTag: Player
+  Speed: 1
+  RoamSpeed: 0.5
+  Health: 100
+  CurrentHealth: 0
+  Name: Mumu
