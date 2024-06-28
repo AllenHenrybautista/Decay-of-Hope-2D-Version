@@ -223,7 +223,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,7 +244,7 @@ TextureImporter:
         width: 30
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -613,6 +613,342 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: DEMO_24
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 281
+        width: 108
+        height: 135
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16323377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da3f2e55b7e65e1489a616fad7f88084
+      internalID: 1447004311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_25
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 199
+        width: 64
+        height: 67
+      alignment: 9
+      pivot: {x: 0.5111656, y: 0.29735783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f346fe1b42c8364d848ef5d8eae8fc9
+      internalID: 208420840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_26
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 34
+        width: 41
+        height: 46
+      alignment: 9
+      pivot: {x: 0.4820817, y: 0.19922422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 971b414f9d013544d8f39b6aa90c8916
+      internalID: -1273497897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_27
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 25
+        width: 54
+        height: 47
+      alignment: 9
+      pivot: {x: 0.48866272, y: 0.2056237}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1330c33ee7241b74dbe844a25950ba45
+      internalID: 665721415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_28
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 272
+        width: 16
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5352936, y: 0.07315302}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee76da004021de4da259cf6becfe07a
+      internalID: 2052042300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_29
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 352
+        width: 16
+        height: 64
+      alignment: 9
+      pivot: {x: 0.51187515, y: 0.05911541}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c6949673a8e014cb2b1041aaa66715
+      internalID: -1031030666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_30
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 272
+        width: 6
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14693022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019e2b7bdea3d7a4090ab371b8aae4d1
+      internalID: 1895417982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_31
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 336
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4408a615f3d9ed4aa1b0702f4cd3574
+      internalID: 1557820427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 272
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5071583, y: 0.22973919}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e1de5a71658644a9a40822b278225a
+      internalID: -1590922126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_33
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 272
+        width: 12
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4618174, y: 0.18320417}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a25c69084b334445aa607ed004c9b63
+      internalID: 244917996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_34
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 272
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5107384, y: 0.1742549}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2bb99368b904941ac38b0aa5da4c9e
+      internalID: 1649698875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_35
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 285
+        width: 23
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5a4e32cfb6e3a44ba45f30a9743e85
+      internalID: 256218698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_36
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 351
+        width: 16
+        height: 65
+      alignment: 9
+      pivot: {x: 0.5582371, y: 0.11724243}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7295abedb8ef949abc7dbb01e5eeb9
+      internalID: 2100381397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_37
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 352
+        width: 15
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18079138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a626f9ab86632544874df49ead61347
+      internalID: -1768849142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_38
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 285
+        width: 21
+        height: 67
+      alignment: 9
+      pivot: {x: 0.52161807, y: 0.107017405}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ceca31b91b884346b6afee0353aaabb
+      internalID: -1422247356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEMO_39
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 344
+        width: 96
+        height: 72
+      alignment: 9
+      pivot: {x: 0.49064, y: 0.22690752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b613ff57907d6d448bbb1aae174837ad
+      internalID: 1153383535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -641,7 +977,23 @@ TextureImporter:
       DEMO_21: 1790024285
       DEMO_22: -826562376
       DEMO_23: 1051833225
+      DEMO_24: 1447004311
+      DEMO_25: 208420840
+      DEMO_26: -1273497897
+      DEMO_27: 665721415
+      DEMO_28: 2052042300
+      DEMO_29: -1031030666
       DEMO_3: 600756534
+      DEMO_30: 1895417982
+      DEMO_31: 1557820427
+      DEMO_32: -1590922126
+      DEMO_33: 244917996
+      DEMO_34: 1649698875
+      DEMO_35: 256218698
+      DEMO_36: 2100381397
+      DEMO_37: -1768849142
+      DEMO_38: -1422247356
+      DEMO_39: 1153383535
       DEMO_4: 1666914823
       DEMO_5: 75410559
       DEMO_6: 271330637
