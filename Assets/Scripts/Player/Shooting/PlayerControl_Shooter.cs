@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerControl_Shooter : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
 
@@ -22,6 +20,8 @@ public class PlayerControls : MonoBehaviour
     private const string Vertical = "Vertical";
     private const string LastHorizontal = "LastHorizontal";
     private const string LastVertical = "LastVertical";
+    private const string DieVertical = "DieVertical";
+    private const string DieHorizontal = "DieHorizontal";
 
 
     public static Vector2 Movement;
@@ -40,6 +40,7 @@ public class PlayerControls : MonoBehaviour
         PlayerMove();
         HandleAnimation();
         PlayFootstepSound();
+        LookAtMouse();
     }
 
     private void SetupPlayer()
@@ -56,7 +57,7 @@ public class PlayerControls : MonoBehaviour
         {
             _moveAction = _playerInput.actions["Move"];
         }
-                
+
         else
             Debug.LogError("PlayerInput is Missing");
     }
@@ -78,7 +79,7 @@ public class PlayerControls : MonoBehaviour
         {
             _animator.SetFloat(LastHorizontal, _movement.x);
             _animator.SetFloat(LastVertical, _movement.y);
-            _playerCombat.UpdateDirection(_movement.x, _movement.y);
+            //_playerCombat.UpdateDirection(_movement.x, _movement.y);
         }
     }
 
@@ -86,11 +87,37 @@ public class PlayerControls : MonoBehaviour
     {
         if (footstepSFX == null)
             return;
-        
+
         if (Movement != Vector2.zero && Time.time >= nextFootstepTime)
         {
             footstepSFX.Play();
             nextFootstepTime = Time.time + footstepInterval;
         }
     }
+    //incorporate mouse look here without sprite flipping, instead use the animator directions
+    private void LookAtMouse()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+
+        if ( mousePos.x < playerScreenPoint.x)
+        {
+            _animator.SetFloat(LastHorizontal, 1);
+        }
+        else
+        {
+            _animator.SetFloat(Horizontal, 0);
+        }
+
+        if (mousePos.y < playerScreenPoint.y)
+        {
+            _animator.SetFloat(Vertical, -1);
+        }
+        else
+        {
+            _animator.SetFloat(Vertical, 0);
+        }
+    }
+
+
 }

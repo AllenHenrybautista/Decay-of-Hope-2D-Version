@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,48 +24,51 @@ public class PlayerCombat : MonoBehaviour
     private float _lastHorizontal;
     private float _lastVertical;
 
+
     public void UpdateDirection(float lastHorizontal, float lastVertical)
     {
         _lastHorizontal = lastHorizontal;
         _lastVertical = lastVertical;
     }
 
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _animator.SetFloat("ShootHorizontal", _lastHorizontal);
+            _animator.SetFloat("ShootVertical", _lastVertical);
+            _animator.SetTrigger("Shoot");
+
+
+            //fix this issue NullReferenceException while executing 'performed' callbacks of 'Movement/Attack[/Keyboard/space]'UnityEngine.InputSystem.LowLevel.NativeInputRuntime /<> c__DisplayClass7_0:< set_onUpdate > b__0(UnityEngineInternal.Input.NativeInputUpdateType, UnityEngineInternal.Input.NativeInputEventBuffer *)UnityEngineInternal.Input.NativeInputSystem:NotifyUpdate(UnityEngineInternal.Input.NativeInputUpdateType, intptr)
+            GameObject bullet = Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity) as GameObject;
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_lastHorizontal, _lastVertical).normalized * 10;
+
+        }
+    }
+
     public void Attack(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            _animator.SetFloat("AttackHorizontal", _lastHorizontal);
-            _animator.SetFloat("AttackVertical", _lastVertical);
-            _animator.SetTrigger("Attack");
+            _animator.SetFloat("StabHorizontal", _lastHorizontal);
+            _animator.SetFloat("StabVertical", _lastVertical);
+            _animator.SetTrigger("Stab");
 
             attacksequence();
 
-            //implement attack point for each direction
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRange, enemyLayers);
+            //detect enemies in range of attack and please fix this issue NullReferenceException while executing 'performed' callbacks of 'Movement/Attack[/Keyboard/ctrl]'UnityEngine.InputSystem.LowLevel.NativeInputRuntime /<> c__DisplayClass7_0:< set_onUpdate > b__0(UnityEngineInternal.Input.NativeInputUpdateType, UnityEngineInternal.Input.NativeInputEventBuffer *)UnityEngineInternal.Input.NativeInputSystem:NotifyUpdate(UnityEngineInternal.Input.NativeInputUpdateType, intptr)
+
+            Collider2D[] hitEnemiesLeft = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRange, enemyLayers);
             Collider2D[] hitEnemiesRight = Physics2D.OverlapCircleAll(attackPointRight.position, attackRange, enemyLayers);
             Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(attackPointUp.position, attackRange, enemyLayers);
             Collider2D[] hitEnemiesDown = Physics2D.OverlapCircleAll(attackPointDown.position, attackRange, enemyLayers);
 
-            foreach (Collider2D enemy in hitEnemiesRight)
+            foreach (Collider2D enemy in hitEnemiesLeft)
             {
                 enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
             }
 
-            foreach (Collider2D enemy in hitEnemiesUp)
-            {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
-            }
-
-            foreach (Collider2D enemy in hitEnemiesDown)
-            {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
-            }
-
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
-               
-            }
 
             //play slash sound from audio manager
             audioManager.PlaySoundEffect("Slash");
@@ -94,12 +98,15 @@ public class PlayerCombat : MonoBehaviour
 
     private IEnumerator attacksequence()
     {
+        GetComponent<Rigidbody2D>().simulated = false;
         yield return new WaitForSeconds(0.5f);
+        GetComponent<Rigidbody2D>().simulated = true;
     }
 
     void Die()
     {
         GetComponent<PlayerCombat>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
+        _animator.SetTrigger("Die");
     }
 }
