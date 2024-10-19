@@ -22,6 +22,13 @@ public class PlayerCombat : MonoBehaviour
 
     private float _lastHorizontal;
     private float _lastVertical;
+    private PlayerInput _inputActions;
+
+
+    private void Awake()
+    {
+        _inputActions = GetComponent<PlayerInput>();
+    }
 
     public void UpdateDirection(float lastHorizontal, float lastVertical)
     {
@@ -39,38 +46,42 @@ public class PlayerCombat : MonoBehaviour
 
             attacksequence();
 
-            //implement attack point for each direction
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRange, enemyLayers);
-            Collider2D[] hitEnemiesRight = Physics2D.OverlapCircleAll(attackPointRight.position, attackRange, enemyLayers);
-            Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(attackPointUp.position, attackRange, enemyLayers);
-            Collider2D[] hitEnemiesDown = Physics2D.OverlapCircleAll(attackPointDown.position, attackRange, enemyLayers);
+            // Determine which attack point to use based on the player's last movement direction
+            Transform chosenAttackPoint = null;
 
-            foreach (Collider2D enemy in hitEnemiesRight)
+            if (_lastHorizontal > 0) // Attack right
             {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
+                chosenAttackPoint = attackPointRight;
+            }
+            else if (_lastHorizontal < 0) // Attack left
+            {
+                chosenAttackPoint = attackPointLeft;
+            }
+            else if (_lastVertical > 0) // Attack up
+            {
+                chosenAttackPoint = attackPointUp;
+            }
+            else if (_lastVertical < 0) // Attack down
+            {
+                chosenAttackPoint = attackPointDown;
             }
 
-            foreach (Collider2D enemy in hitEnemiesUp)
+            if (chosenAttackPoint != null)
             {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
+                // Check for enemies at the chosen attack point
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(chosenAttackPoint.position, attackRange, enemyLayers);
+
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
+                }
             }
 
-            foreach (Collider2D enemy in hitEnemiesDown)
-            {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
-            }
-
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<EnemyHandler>().TakeDamage(attackDamage);
-               
-            }
-
-            //play slash sound from audio manager
-            audioManager.PlaySoundEffect("Slash");
-
+            // Play slash sound from audio manager
+            //audioManager.PlaySoundEffect("Slash");
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {
