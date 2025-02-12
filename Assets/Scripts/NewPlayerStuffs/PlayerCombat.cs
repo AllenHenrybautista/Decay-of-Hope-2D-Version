@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioManager audioManager;
+    
 
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 100;
     public int playerHealth = 100;
-    public int remainingHealth = 0;
+    public UnityEvent OnHealthChanged = new UnityEvent();
 
     [Header("AttackPoints")]
     public Transform attackPointLeft;
@@ -97,10 +99,18 @@ public class PlayerCombat : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
+        HealthBarAdjust();
+
         if (playerHealth <= 0)
         {
             Die();
         }
+    }
+
+    private void HealthBarAdjust()
+    {
+        OnHealthChanged.Invoke();
+        Debug.Log("nag addjust pero di gumagalaw");
     }
 
     private IEnumerator attacksequence()

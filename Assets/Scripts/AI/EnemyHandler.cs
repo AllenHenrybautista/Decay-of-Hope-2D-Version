@@ -47,10 +47,19 @@ public class EnemyHandler : MonoBehaviour
 
     private void Update()
     {
-        // Logic to decide behavior based on player proximity
+        BehaviorUpdate(); 
+    }
+
+    private void BehaviorUpdate()
+    {
         if (isNear)
         {
-            MoveTowardsTarget(GameObject.FindGameObjectWithTag("Player").transform.position);
+            Transform playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+            if (playerTransform != null)
+            {
+                MoveTowardsTarget(playerTransform.position); // Pass the player's position directly
+            }
         }
         else
         {
@@ -60,12 +69,16 @@ public class EnemyHandler : MonoBehaviour
             }
             else
             {
+                _anim.SetFloat("Horizontal", 0);
+                _anim.SetFloat("Vertical", 0);
                 _anim.SetFloat("LastHorizontal", 0);
-               
+                _anim.SetFloat("LastVertical", 0);
+                _anim.SetTrigger("Idle");
                 roamSpeed = 0;
             }
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -97,7 +110,21 @@ public class EnemyHandler : MonoBehaviour
 
     public void MoveTowardsTarget(Vector2 targetPosition)
     {
+        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+        // Move enemy
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+        // Update Animator
+        _anim.SetFloat("Horizontal", direction.x);
+        _anim.SetFloat("Vertical", direction.y);
+
+        // Store last direction when moving
+        if (direction.magnitude > 0)
+        {
+            _anim.SetFloat("LastHorizontal", direction.x);
+            _anim.SetFloat("LastVertical", direction.y);
+        }
     }
 
     public void Roam()
