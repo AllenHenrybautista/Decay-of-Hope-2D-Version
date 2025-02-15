@@ -85,7 +85,7 @@ public class EnemyHandler : MonoBehaviour
         // Collision logic with player
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(10);
+            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(10);
             _anim.SetTrigger("Attack");
         }
     }

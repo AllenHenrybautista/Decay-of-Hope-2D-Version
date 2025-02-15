@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _sprintMultiplier = 1.5f;
 
     //Input System
     private Vector2 _movement;
@@ -16,6 +17,10 @@ public class PlayerControls : MonoBehaviour
     private InputAction _moveAction;
     private PlayerInput _playerInput;
     private PlayerCombat _playerCombat;
+    private InputAction _sprintAction;
+    private bool _isSprinting = false;
+
+    private PlayerStats _playerStats;
 
     //Animation Parameters
     private const string Horizontal = "Horizontal";
@@ -47,6 +52,7 @@ public class PlayerControls : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _playerCombat = GetComponent<PlayerCombat>();
+        _playerStats = GetComponent<PlayerStats>();
     }
 
     private void ReadInputs()
@@ -55,6 +61,9 @@ public class PlayerControls : MonoBehaviour
         if (_playerInput != null)
         {
             _moveAction = _playerInput.actions["Move"];
+            _sprintAction = _playerInput.actions["Sprint"];
+            _sprintAction.started += ctx => _isSprinting = true;
+            _sprintAction.canceled += ctx => _isSprinting = false;
         }
                 
         else
@@ -65,12 +74,34 @@ public class PlayerControls : MonoBehaviour
     {
         if (_moveAction != null)
             Movement = _moveAction.ReadValue<Vector2>();
+
+        if (!_playerStats.CanSprint)
+        {
+            _isSprinting = false;
+        }
+
+        float speed = _isSprinting ? _speed * _sprintMultiplier : _speed;
+
+        _rb.velocity = Movement * speed;
+
+        if (_isSprinting)
+        {
+            _playerStats.DrainStamina();
+        }
+        else
+        {
+            _playerStats.RegenerateStamina();
+        }
+    }
+
+    private void Pickup()
+    {
+        _moveAction = _playerInput.actions["pickup"];
     }
 
     private void HandleAnimation()
     {
         _movement.Set(Movement.x, Movement.y);
-        _rb.velocity = _movement * _speed;
         _animator.SetFloat(Horizontal, _movement.x);
         _animator.SetFloat(Vertical, _movement.y);
 
@@ -78,8 +109,12 @@ public class PlayerControls : MonoBehaviour
         {
             _animator.SetFloat(LastHorizontal, _movement.x);
             _animator.SetFloat(LastVertical, _movement.y);
-            _playerCombat.UpdateDirection(_movement.x, _movement.y);
         }
+
+        _playerCombat.UpdateDirection(
+            _animator.GetFloat(LastHorizontal),
+            _animator.GetFloat(LastVertical)
+        );
     }
 
     private void PlayFootstepSound()
@@ -90,7 +125,7 @@ public class PlayerControls : MonoBehaviour
         if (Movement != Vector2.zero && Time.time >= nextFootstepTime)
         {
             footstepSFX.Play();
-            nextFootstepTime = Time.time + footstepInterval;
+            nextFootstepTime = Time.time + (_isSprinting ? footstepInterval / 1.5f : footstepInterval);
         }
     }
 }

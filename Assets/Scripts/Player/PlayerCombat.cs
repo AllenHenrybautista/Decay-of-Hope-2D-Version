@@ -13,8 +13,6 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 100;
-    public int playerHealth = 100;
-    public UnityEvent OnHealthChanged = new UnityEvent();
 
     [Header("AttackPoints")]
     public Transform attackPointLeft;
@@ -96,31 +94,8 @@ public class PlayerCombat : MonoBehaviour
         Gizmos.DrawWireSphere(attackPointDown.position, attackRange);
     }
 
-    public void TakeDamage(int damage)
-    {
-        playerHealth -= damage;
-        HealthBarAdjust();
-
-        if (playerHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void HealthBarAdjust()
-    {
-        OnHealthChanged.Invoke();
-        Debug.Log("nag addjust pero di gumagalaw");
-    }
-
     private IEnumerator attacksequence()
     {
         yield return new WaitForSeconds(0.5f);
-    }
-
-    void Die()
-    {
-        GetComponent<PlayerCombat>().enabled = false;
-        GetComponent<Rigidbody2D>().simulated = false;
     }
 }

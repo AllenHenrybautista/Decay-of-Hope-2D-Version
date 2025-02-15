@@ -111,8 +111,7 @@ GameObject:
   - component: {fileID: 8315108138913951914}
   - component: {fileID: 4485339577273886695}
   - component: {fileID: 868556798251725637}
-  - component: {fileID: 1062071260448865673}
-  - component: {fileID: 2280660719067200497}
+  - component: {fileID: 26862146359947769}
   - component: {fileID: 5545586531493910458}
   - component: {fileID: 504318287927202974}
   m_Layer: 0
@@ -282,23 +281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _sprintMultiplier: 1.5
   footstepSFX: {fileID: 0}
   footstepInterval: 0.5
---- !u!114 &1062071260448865673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7070479212767247276}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3573719d78c38745834b0d96bb1e2e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 50
-  moneyBalance: {fileID: 0}
---- !u!114 &2280660719067200497
+--- !u!114 &26862146359947769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,12 +293,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 7070479212767247276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac13f5326f83f24890bc0dc153bb791, type: 3}
+  m_Script: {fileID: 11500000, guid: 33b0ac6697c7b0d489e74bc5c0b65995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
-  inventoryLimit: 4
-  wallet: {fileID: 1062071260448865673}
+  maxHealth: 100
+  currentHealth: 100
+  maxStamina: 100
+  currentStamina: 100
+  staminaDrainRate: 10
+  staminaRegenRate: 5
+  maxHunger: 100
+  currentHunger: 100
+  hungerDrainRate: 0.5
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: UpdateHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnStaminaChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHungerChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5545586531493910458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,8 +345,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDamage: 100
-  playerHealth: 100
-  remainingHealth: 0
   attackPointLeft: {fileID: 4660619917471185037}
   attackPointRight: {fileID: 1851593149437842419}
   attackPointUp: {fileID: 5772708746869747533}
